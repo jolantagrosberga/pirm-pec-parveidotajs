@@ -9,397 +9,150 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FFFBF0;
-    --ink:#1A1A2E;
-    --pink:#FF3E7F;
-    --cyan:#00B4BD;
-    --yellow:#FFD400;
-    --purple:#7C3AED;
-    --orange:#FF8A00;
-    --green:#2FBF71;
-    --white:#FFFFFF;
-    --gray:#C9C9D4;
-    --grayText:#6B6B7A;
+    --bg:#FFFBF0; --ink:#1A1A2E; --pink:#FF3E7F; --cyan:#00B4BD; --yellow:#FFD400;
+    --purple:#7C3AED; --orange:#FF8A00; --green:#2FBF71; --white:#FFFFFF; --gray:#C9C9D4; --grayText:#6B6B7A;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Nunito',sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
-  }
- 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    text-align:center;
-    padding:34px 20px 28px;
-    background:var(--orange);
-    border-bottom:5px solid var(--ink);
-    overflow:hidden;
-  }
-  .hero::before{
-    content:"";
-    position:absolute; inset:0;
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;}
+  body{background:var(--bg);color:var(--ink);font-family:'Nunito',sans-serif;}
+  #app{position:absolute;top:0;left:0;width:1600px;height:900px;transform-origin:0 0;overflow:hidden;
+    background:var(--bg);display:grid;grid-template-columns:500px 1fr;}
+
+  /* ---------- KREISAIS PANELIS ---------- */
+  .hero{position:relative;background:var(--orange);border-right:5px solid var(--ink);overflow:hidden;
+    display:flex;flex-direction:column;padding:30px 30px 0;}
+  .hero::before{content:"";position:absolute;inset:0;
     background-image:radial-gradient(circle, rgba(255,255,255,0.5) 1.4px, transparent 1.6px);
-    background-size:16px 16px;
-    pointer-events:none;
-  }
-  .eyebrow{
-    position:relative;
-    display:inline-block;
-    font-weight:800;
-    font-size:clamp(11px,2vw,13px);
-    letter-spacing:2px;
-    background:var(--ink);
-    color:var(--yellow);
-    padding:5px 14px;
-    border-radius:999px;
-    margin-bottom:14px;
-  }
-  h1{
-    position:relative;
-    font-family:'Bangers',cursive;
-    font-weight:400;
-    letter-spacing:2px;
-    font-size:clamp(32px,7.5vw,52px);
-    line-height:0.95;
-    color:var(--white);
-    -webkit-text-stroke:2.5px var(--ink);
-    text-shadow:4px 4px 0 var(--ink);
-    margin:0 0 12px;
-    transform:rotate(-1deg);
-  }
-  .subtitle{
-    position:relative;
-    max-width:520px;
-    margin:0 auto;
-    font-weight:700;
-    font-size:clamp(14px,2.4vw,17px);
-    background:var(--white);
-    display:inline-block;
-    padding:8px 18px;
-    border:3px solid var(--ink);
-    border-radius:14px;
-    box-shadow:4px 4px 0 var(--ink);
-  }
- 
-  main{max-width:620px;margin:0 auto;padding:26px 18px 20px;}
- 
-  /* ---------- CATEGORY TABS ---------- */
-  .cat-tabs{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    justify-content:center;
-    margin-bottom:20px;
-  }
-  .cat-tab{
-    cursor:pointer;
-    font-weight:800;
-    font-size:12.5px;
-    letter-spacing:.5px;
-    background:var(--white);
-    border:3px solid var(--ink);
-    border-radius:999px;
-    padding:8px 14px;
-    display:flex;
-    align-items:center;
-    gap:6px;
-    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
-    box-shadow:3px 3px 0 var(--ink);
-  }
+    background-size:16px 16px;pointer-events:none;}
+  .hero > *{position:relative;}
+  .hero-top{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .eyebrow{display:inline-block;font-weight:800;font-size:14px;letter-spacing:2px;background:var(--ink);color:var(--yellow);
+    padding:6px 14px;border-radius:999px;}
+  #fsBtn{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--ink);background:var(--white);
+    border:3px solid var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;white-space:nowrap;}
+  #fsBtn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink);}
+  h1{font-family:'Bangers',cursive;font-weight:400;letter-spacing:2px;font-size:66px;line-height:1.02;color:var(--white);
+    -webkit-text-stroke:2.5px var(--ink);text-shadow:5px 5px 0 var(--ink);margin:26px 0 16px;transform:rotate(-1.5deg);}
+  .subtitle{margin:0;font-weight:700;font-size:18px;line-height:1.4;background:var(--white);padding:12px 18px;
+    border:3px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);}
+  .cat-label{margin:26px 0 10px;font-weight:900;font-size:13px;letter-spacing:2px;color:var(--ink);}
+  .cat-tabs{display:flex;flex-direction:column;gap:10px;}
+  .cat-tab{cursor:pointer;font-weight:800;font-size:17px;letter-spacing:.5px;background:var(--white);border:3px solid var(--ink);
+    border-radius:999px;padding:10px 18px;display:flex;align-items:center;gap:10px;box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;}
   .cat-tab:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink);}
-  .cat-tab.active{ color:var(--white); transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--ink); }
-  .cat-tab .cat-icon{ font-size:15px; }
- 
-  /* ---------- DOT NAV ---------- */
-  .dots-nav{
-    display:flex;align-items:center;justify-content:center;
-    gap:7px;margin-bottom:22px;flex-wrap:wrap;
-  }
-  .dot{
-    width:12px;height:12px;border-radius:50%;
-    background:var(--white);
-    border:2.5px solid var(--ink);
-    cursor:pointer;
-    transition:transform .15s ease, background .15s ease;
-  }
+  .cat-tab.active{color:var(--white);transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+  .cat-tab .cat-icon{font-size:22px;}
+  .ethics-banner{margin:auto -30px 0;font-weight:800;font-size:16px;line-height:1.4;background:var(--yellow);
+    border-top:5px solid var(--ink);padding:16px 30px 20px;}
+
+  /* ---------- DARBA LAUKUMS ---------- */
+  main{display:flex;flex-direction:column;align-items:center;padding:26px 40px 30px;min-width:0;}
+  .dots-nav{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:22px;flex:none;}
+  .dot{width:18px;height:18px;border-radius:50%;background:var(--white);border:3px solid var(--ink);cursor:pointer;
+    transition:transform .15s ease, background .15s ease;}
   .dot:hover{transform:scale(1.25);}
   .dot.active{background:var(--ink);transform:scale(1.3);}
- 
-  /* ---------- STAGE ---------- */
-  .stage-wrap{
-    position:relative;
-    min-height:340px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:22px;
-  }
-  .scene-card{
-    position:relative;
-    width:100%;
-    max-width:400px;
-    min-height:320px;
-  }
- 
-  /* BEFORE (deliberately plain/boring) */
-  .before-view{
-    background:var(--white);
-    border:2px solid var(--gray);
-    border-radius:10px;
-    padding:40px 24px;
-    text-align:center;
-    box-shadow:0 2px 6px rgba(0,0,0,0.06);
-  }
-  .before-view.vanish{
-    animation:vanishOut .28s ease forwards;
-  }
-  @keyframes vanishOut{
-    to{ opacity:0; transform:scale(0.7) rotate(-6deg); }
-  }
-  .before-icon{
-    font-size:44px;
-    display:block;
-    margin-bottom:18px;
-    filter:grayscale(70%);
-    opacity:.75;
-  }
-  .before-label{
-    font-weight:800;
-    font-size:11px;
-    letter-spacing:2px;
-    color:var(--grayText);
-    margin-bottom:10px;
-  }
-  .before-caption{
-    font-weight:600;
-    font-size:14.5px;
-    color:var(--grayText);
-  }
- 
-  /* AFTER (loud, comic, exploded) */
-  .after-view{
-    position:relative;
-    border:5px solid var(--ink);
-    border-radius:24px;
-    padding:38px 24px 30px;
-    text-align:center;
-    overflow:hidden;
-  }
-  .after-view.pattern-dots::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image:radial-gradient(circle, rgba(255,255,255,0.45) 1.4px, transparent 1.6px);
-    background-size:14px 14px;
-    pointer-events:none;
-  }
-  .after-view.pattern-stripes::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.28) 0 8px, transparent 8px 18px);
-    pointer-events:none;
-  }
-  .after-view.pattern-grid::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.28) 1.5px, transparent 1.5px),
-      linear-gradient(90deg, rgba(255,255,255,.28) 1.5px, transparent 1.5px);
-    background-size:20px 20px;
-    pointer-events:none;
-  }
-  .after-view.enter{
-    animation:explodeIn .5s cubic-bezier(.22,1.6,.4,1) both;
-  }
-  @keyframes explodeIn{
-    0%{ opacity:0; transform:scale(.3) rotate(12deg); }
-    55%{ opacity:1; transform:scale(1.12) rotate(-4deg); }
-    100%{ opacity:1; transform:scale(1) rotate(0deg); }
-  }
- 
-  .burst{
-    position:absolute;
-    top:50%; left:50%;
-    width:260px; height:260px;
-    transform:translate(-50%,-50%) scale(0) rotate(0deg);
-    background:var(--white);
-    opacity:.5;
-    clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-    z-index:0;
-  }
-  .after-view.enter .burst{
-    animation:burstPop .6s ease-out both;
-  }
-  @keyframes burstPop{
-    0%{ transform:translate(-50%,-50%) scale(0) rotate(0deg); opacity:.9; }
-    70%{ transform:translate(-50%,-50%) scale(1.15) rotate(35deg); opacity:.55; }
-    100%{ transform:translate(-50%,-50%) scale(1) rotate(25deg); opacity:.35; }
-  }
- 
-  .after-icon{
-    position:relative;
-    z-index:2;
-    font-size:60px;
-    display:block;
-    margin-bottom:8px;
-  }
-  .after-view.enter .after-icon{
-    animation:iconWiggle .6s ease .1s both;
-  }
-  @keyframes iconWiggle{
-    0%{ transform:scale(.4) rotate(0deg); }
-    50%{ transform:scale(1.25) rotate(-10deg); }
-    75%{ transform:scale(1.05) rotate(6deg); }
-    100%{ transform:scale(1) rotate(0deg); }
-  }
- 
-  .action-fx{
-    position:relative;
-    z-index:2;
-    display:inline-block;
-    font-family:'Bangers',cursive;
-    font-size:clamp(22px,6vw,30px);
-    letter-spacing:1px;
-    color:var(--yellow);
-    -webkit-text-stroke:2px var(--ink);
-    margin-bottom:10px;
-    transform:rotate(-4deg) scale(0);
-  }
-  .after-view.enter .action-fx{
-    animation:stampIn .4s cubic-bezier(.3,1.6,.4,1) .25s both;
-  }
-  @keyframes stampIn{
-    to{ transform:rotate(-4deg) scale(1); }
-  }
- 
-  .after-label{
-    position:relative;
-    z-index:2;
-    display:inline-block;
-    font-weight:800;
-    font-size:11px;
-    letter-spacing:2px;
-    color:var(--white);
-    background:var(--ink);
-    padding:4px 12px;
-    border-radius:999px;
-    margin-bottom:10px;
-  }
-  .after-caption{
-    position:relative;
-    z-index:2;
-    font-family:'Bangers',cursive;
-    font-size:clamp(17px,4.2vw,21px);
-    letter-spacing:.5px;
-    text-shadow:2px 2px 0 var(--ink);
-    line-height:1.25;
-  }
- 
-  .confetti-dot{
-    position:absolute;
-    top:50%; left:50%;
-    width:9px; height:9px;
-    border-radius:2px;
-    z-index:1;
-    opacity:0;
-  }
-  .after-view.enter .confetti-dot{
-    animation:confettiFly .7s ease-out both;
-  }
-  @keyframes confettiFly{
-    0%{ opacity:1; transform:translate(-50%,-50%) scale(1) translate(0,0) rotate(0deg); }
-    100%{ opacity:0; transform:translate(-50%,-50%) scale(.6) translate(var(--dx),var(--dy)) rotate(var(--dr)); }
-  }
- 
-  /* ---------- TRANSFORM BUTTON ---------- */
-  .transform-wrap{ text-align:center; margin-bottom:26px; }
-  #transformBtn{
-    font-family:'Bangers',cursive;
-    letter-spacing:1.5px;
-    font-size:clamp(19px,4.4vw,24px);
-    color:var(--white);
-    background:var(--purple);
-    border:4px solid var(--ink);
-    border-radius:999px;
-    padding:14px 38px;
-    cursor:pointer;
-    box-shadow:6px 6px 0 var(--ink);
-    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-  }
-  #transformBtn:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink);}
+  .counter{font-family:'Bangers',cursive;font-size:22px;letter-spacing:1px;margin-left:10px;}
+
+  .stage{flex:1;min-height:0;width:100%;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;}
+  .slot{height:560px;display:flex;align-items:center;justify-content:center;}
+  .arrow{font-family:'Bangers',cursive;font-size:64px;text-align:center;color:var(--ink);opacity:.25;transition:opacity .3s, color .3s;}
+  .arrow.on{opacity:1;color:var(--purple);}
+
+  /* PIRMS (apzināti garlaicīgs) */
+  .before-view{width:100%;height:100%;background:var(--white);border:2px solid var(--gray);border-radius:12px;
+    padding:40px 34px;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,0.06);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .3s;}
+  .before-view.dim{opacity:.6;}
+  .before-icon{font-size:110px;display:block;margin-bottom:26px;filter:grayscale(70%);opacity:.75;line-height:1;}
+  .before-label{font-weight:800;font-size:15px;letter-spacing:3px;color:var(--grayText);margin-bottom:14px;}
+  .before-caption{font-weight:600;font-size:26px;line-height:1.35;color:var(--grayText);}
+
+  /* PĒC — aizsegts */
+  .after-hidden{width:100%;height:100%;border:4px dashed var(--ink);border-radius:24px;opacity:.55;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:30px;
+    background:repeating-linear-gradient(45deg, rgba(26,26,46,.04) 0 10px, transparent 10px 22px);}
+  .after-hidden .q{font-family:'Bangers',cursive;font-size:120px;line-height:1;}
+  .after-hidden .h{font-weight:800;font-size:19px;}
+
+  /* PĒC (skaļš, komisks) */
+  .after-view{position:relative;width:100%;height:100%;border:5px solid var(--ink);border-radius:24px;
+    padding:36px 34px 30px;text-align:center;overflow:hidden;box-shadow:8px 8px 0 var(--ink);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .after-view.pattern-dots::before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle, rgba(255,255,255,0.45) 1.6px, transparent 1.9px);background-size:16px 16px;pointer-events:none;}
+  .after-view.pattern-stripes::before{content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.28) 0 10px, transparent 10px 22px);pointer-events:none;}
+  .after-view.pattern-grid::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.28) 2px, transparent 2px),linear-gradient(90deg, rgba(255,255,255,.28) 2px, transparent 2px);
+    background-size:24px 24px;pointer-events:none;}
+  .after-view.enter{animation:explodeIn .5s cubic-bezier(.22,1.6,.4,1) both;}
+  @keyframes explodeIn{0%{opacity:0;transform:scale(.3) rotate(12deg);}55%{opacity:1;transform:scale(1.08) rotate(-3deg);}100%{opacity:1;transform:scale(1) rotate(0deg);}}
+  .burst{position:absolute;top:50%;left:50%;width:460px;height:460px;transform:translate(-50%,-50%) scale(1) rotate(25deg);
+    background:var(--white);opacity:.35;z-index:0;
+    clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+  .after-view.enter .burst{animation:burstPop .6s ease-out both;}
+  @keyframes burstPop{0%{transform:translate(-50%,-50%) scale(0) rotate(0deg);opacity:.9;}70%{transform:translate(-50%,-50%) scale(1.15) rotate(35deg);opacity:.55;}100%{transform:translate(-50%,-50%) scale(1) rotate(25deg);opacity:.35;}}
+  .after-icon{position:relative;z-index:2;font-size:120px;display:block;margin-bottom:8px;line-height:1.1;}
+  .after-view.enter .after-icon{animation:iconWiggle .6s ease .1s both;}
+  @keyframes iconWiggle{0%{transform:scale(.4) rotate(0deg);}50%{transform:scale(1.25) rotate(-10deg);}75%{transform:scale(1.05) rotate(6deg);}100%{transform:scale(1) rotate(0deg);}}
+  .action-fx{position:relative;z-index:2;display:inline-block;font-family:'Bangers',cursive;font-size:52px;letter-spacing:1.5px;
+    color:var(--yellow);-webkit-text-stroke:2.5px var(--ink);margin-bottom:12px;transform:rotate(-4deg);}
+  .after-view.enter .action-fx{animation:stampIn .4s cubic-bezier(.3,1.6,.4,1) .25s both;}
+  @keyframes stampIn{from{transform:rotate(-4deg) scale(0);}to{transform:rotate(-4deg) scale(1);}}
+  .after-label{position:relative;z-index:2;display:inline-block;font-weight:800;font-size:15px;letter-spacing:3px;color:var(--white);
+    background:var(--ink);padding:5px 16px;border-radius:999px;margin-bottom:14px;}
+  .after-caption{position:relative;z-index:2;font-family:'Bangers',cursive;font-size:38px;letter-spacing:.8px;
+    text-shadow:3px 3px 0 var(--ink);line-height:1.2;}
+  .confetti-dot{position:absolute;top:50%;left:50%;width:14px;height:14px;border-radius:3px;z-index:1;opacity:0;}
+  .after-view.enter .confetti-dot{animation:confettiFly .8s ease-out both;}
+  @keyframes confettiFly{0%{opacity:1;transform:translate(-50%,-50%) scale(1) translate(0,0) rotate(0deg);}100%{opacity:0;transform:translate(-50%,-50%) scale(.6) translate(var(--dx),var(--dy)) rotate(var(--dr));}}
+
+  /* ---------- POGAS ---------- */
+  .controls{flex:none;width:100%;display:flex;justify-content:space-between;align-items:center;margin-top:26px;}
+  #transformBtn{font-family:'Bangers',cursive;letter-spacing:2px;font-size:34px;color:var(--white);background:var(--purple);
+    border:4px solid var(--ink);border-radius:999px;padding:14px 50px;cursor:pointer;box-shadow:7px 7px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;}
+  #transformBtn:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--ink);}
   #transformBtn:active{transform:translate(0,0);box-shadow:2px 2px 0 var(--ink);}
-  #transformBtn.is-after{ background:var(--cyan); }
- 
-  /* ---------- NAV ---------- */
-  .nav-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-  .nav-btn{
-    font-family:'Bangers',cursive;
-    letter-spacing:1px;
-    font-size:15px;
-    color:var(--ink);
-    background:var(--white);
-    border:3px solid var(--ink);
-    border-radius:999px;
-    padding:10px 18px;
-    cursor:pointer;
-    box-shadow:4px 4px 0 var(--ink);
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
+  #transformBtn.is-after{background:var(--cyan);}
+  .nav-btn{font-family:'Bangers',cursive;letter-spacing:1px;font-size:22px;color:var(--ink);background:var(--white);
+    border:3px solid var(--ink);border-radius:999px;padding:12px 24px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;}
   .nav-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
- 
-  footer.ethics-banner{
-    text-align:center;
-    font-weight:800;
-    font-size:clamp(13px,2.6vw,15px);
-    background:var(--yellow);
-    border-top:5px solid var(--ink);
-    padding:16px 20px 22px;
-    margin-top:20px;
-  }
- 
-  @media (max-width:420px){
-    .scene-card{ min-height:300px; }
-  }
 </style>
 </head>
 <body>
- 
-<div class="hero">
-  <span class="eyebrow">8.3 · HUMORS PLAKĀTĀ</span>
-  <h1>PIRMS / PĒC<br>PĀRVEIDOTĀJS</h1>
-  <p class="subtitle">Izvēlies jomu, nospied pogu un skaties, kā garlaicīga reklāma pārvēršas pārsteigumā!</p>
+<div id="app">
+  <aside class="hero">
+    <div class="hero-top">
+      <span class="eyebrow">8.3 · HUMORS PLAKĀTĀ</span>
+      <button id="fsBtn" type="button">⛶ Atvērt pilnekrānu</button>
+    </div>
+    <h1>PIRMS / PĒC<br>PĀRVEIDOTĀJS</h1>
+    <p class="subtitle">Izvēlies jomu, nospied pogu un skaties, kā garlaicīga reklāma pārvēršas pārsteigumā!</p>
+    <div class="cat-label">IZVĒLIES JOMU</div>
+    <div class="cat-tabs" id="catTabs"></div>
+    <div class="ethics-banner">💡 Humors nav teksts — tā ir pārsteiguma, pārspīlējuma un enerģijas piedeva jebkam parastam!</div>
+  </aside>
+
+  <main>
+    <div class="dots-nav" id="dotsNav"></div>
+    <div class="stage">
+      <div class="slot" id="beforeSlot"></div>
+      <div class="arrow" id="arrow">➜</div>
+      <div class="slot" id="afterSlot"></div>
+    </div>
+    <div class="controls">
+      <button class="nav-btn" id="prevBtn">← IEPRIEKŠĒJAIS</button>
+      <button id="transformBtn">⚡ PĀRVEIDOT!</button>
+      <button class="nav-btn" id="nextBtn">NĀKAMAIS →</button>
+    </div>
+  </main>
 </div>
- 
-<main>
-  <div class="cat-tabs" id="catTabs"></div>
-  <div class="dots-nav" id="dotsNav"></div>
- 
-  <div class="stage-wrap">
-    <div class="scene-card" id="sceneCard"></div>
-  </div>
- 
-  <div class="transform-wrap">
-    <button id="transformBtn">⚡ PĀRVEIDOT!</button>
-  </div>
- 
-  <div class="nav-row">
-    <button class="nav-btn" id="prevBtn">← IEPRIEKŠĒJAIS</button>
-    <button class="nav-btn" id="nextBtn">NĀKAMAIS →</button>
-  </div>
-</main>
- 
-<footer class="ethics-banner">
-  💡 Humors nav teksts — tā ir pārsteiguma, pārspīlējuma un enerģijas piedeva jebkam parastam!
-</footer>
- 
+
 <script>
 const PALETTE = [
   {bg:'#FF3E7F', text:'#FFFFFF'},
@@ -493,17 +246,20 @@ const categories = [
   }
 ];
  
+
 let catIdx = 0;
 let idx = 0;
 let isAfter = false;
- 
+
 const catTabs = document.getElementById('catTabs');
 const dotsNav = document.getElementById('dotsNav');
-const sceneCard = document.getElementById('sceneCard');
+const beforeSlot = document.getElementById('beforeSlot');
+const afterSlot = document.getElementById('afterSlot');
+const arrow = document.getElementById('arrow');
 const transformBtn = document.getElementById('transformBtn');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
- 
+
 function buildTabs(){
   catTabs.innerHTML = '';
   categories.forEach((c,i)=>{
@@ -512,49 +268,42 @@ function buildTabs(){
     t.innerHTML = `<span class="cat-icon">${c.icon}</span>${c.label}`;
     t.addEventListener('click', ()=>{
       catIdx = i; idx = 0; isAfter = false;
-      buildDots(); render();
-      updateTabs();
+      buildDots(); render(); updateTabs();
     });
     catTabs.appendChild(t);
   });
   updateTabs();
 }
- 
 function updateTabs(){
-  const tabs = catTabs.querySelectorAll('.cat-tab');
-  tabs.forEach((t,i)=>{
-    if(i === catIdx){
-      t.classList.add('active');
-      t.style.background = categories[i].color;
-    } else {
-      t.classList.remove('active');
-      t.style.background = 'var(--white)';
-    }
+  catTabs.querySelectorAll('.cat-tab').forEach((t,i)=>{
+    if(i === catIdx){ t.classList.add('active'); t.style.background = categories[i].color; }
+    else { t.classList.remove('active'); t.style.background = 'var(--white)'; }
   });
 }
- 
 function buildDots(){
   dotsNav.innerHTML = '';
   categories[catIdx].items.forEach((_,i)=>{
     const d = document.createElement('div');
     d.className = 'dot';
+    d.title = (i+1) + '. piemērs';
     d.addEventListener('click', ()=>{ idx = i; isAfter = false; render(); });
     dotsNav.appendChild(d);
   });
+  const c = document.createElement('span'); c.className = 'counter'; c.id = 'counter';
+  dotsNav.appendChild(c);
   updateDots();
 }
- 
 function updateDots(){
-  const dots = dotsNav.querySelectorAll('.dot');
-  dots.forEach((d,i)=> d.classList.toggle('active', i === idx));
+  dotsNav.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i === idx));
+  const c = document.getElementById('counter');
+  if(c) c.textContent = (idx+1) + ' / ' + categories[catIdx].items.length;
 }
- 
 function confettiHTML(color){
   const colors = [color, '#FFD400', '#FFFFFF'];
   let html = '';
-  for(let i=0;i<12;i++){
-    const angle = (Math.PI*2 / 12) * i + (Math.random()*0.4 - 0.2);
-    const dist = 90 + Math.random()*50;
+  for(let i=0;i<16;i++){
+    const angle = (Math.PI*2 / 16) * i + (Math.random()*0.4 - 0.2);
+    const dist = 170 + Math.random()*90;
     const dx = Math.round(Math.cos(angle)*dist);
     const dy = Math.round(Math.sin(angle)*dist);
     const dr = Math.round(Math.random()*360 - 180);
@@ -564,26 +313,31 @@ function confettiHTML(color){
   }
   return html;
 }
- 
 function render(){
   updateDots();
   const item = categories[catIdx].items[idx];
   const paletteEntry = PALETTE[(catIdx*2 + idx) % PALETTE.length];
   const pattern = PATTERNS[idx % PATTERNS.length];
   const stampColor = paletteEntry.bg === '#FFD400' ? '#FFFFFF' : '#FFD400';
- 
+
+  beforeSlot.innerHTML = `
+    <div class="before-view${isAfter ? ' dim' : ''}">
+      <span class="before-icon">${item.icon}</span>
+      <div class="before-label">PIRMS</div>
+      <div class="before-caption">${item.before}</div>
+    </div>`;
+
   if(!isAfter){
-    sceneCard.innerHTML = `
-      <div class="before-view" id="beforeView">
-        <span class="before-icon">${item.icon}</span>
-        <div class="before-label">PIRMS</div>
-        <div class="before-caption">${item.before}</div>
-      </div>
-    `;
+    afterSlot.innerHTML = `
+      <div class="after-hidden">
+        <div class="q">?</div>
+        <div class="h">Nospied „PĀRVEIDOT!” un skaties, kas notiks!</div>
+      </div>`;
     transformBtn.textContent = '⚡ PĀRVEIDOT!';
     transformBtn.classList.remove('is-after');
+    arrow.classList.remove('on');
   } else {
-    sceneCard.innerHTML = `
+    afterSlot.innerHTML = `
       <div class="after-view ${pattern}" id="afterView" style="background:${paletteEntry.bg};color:${paletteEntry.text}">
         <div class="burst"></div>
         ${confettiHTML(paletteEntry.bg)}
@@ -591,46 +345,67 @@ function render(){
         <div class="action-fx" style="color:${stampColor}">${item.verb}</div>
         <div class="after-label">PĒC</div>
         <div class="after-caption">${item.after}</div>
-      </div>
-    `;
-    transformBtn.textContent = '↺ RĀDĪT PIRMS';
+      </div>`;
+    transformBtn.textContent = '↺ PASLĒPT PĒC';
     transformBtn.classList.add('is-after');
+    arrow.classList.add('on');
   }
 }
- 
 function playTransformIn(){
   const el = document.getElementById('afterView');
-  if(el){
-    el.classList.remove('enter');
-    void el.offsetWidth;
-    el.classList.add('enter');
-  }
+  if(el){ el.classList.remove('enter'); void el.offsetWidth; el.classList.add('enter'); }
 }
- 
 transformBtn.addEventListener('click', ()=>{
   isAfter = !isAfter;
   render();
   if(isAfter) playTransformIn();
 });
- 
 prevBtn.addEventListener('click', ()=>{
   const n = categories[catIdx].items.length;
-  idx = (idx - 1 + n) % n;
-  isAfter = false;
-  render();
+  idx = (idx - 1 + n) % n; isAfter = false; render();
 });
- 
 nextBtn.addEventListener('click', ()=>{
   const n = categories[catIdx].items.length;
-  idx = (idx + 1) % n;
-  isAfter = false;
-  render();
+  idx = (idx + 1) % n; isAfter = false; render();
 });
- 
+document.addEventListener('keydown', e=>{
+  if(e.key === 'ArrowRight') nextBtn.click();
+  else if(e.key === 'ArrowLeft') prevBtn.click();
+  else if(e.key === ' ' || e.key === 'Enter'){ if(document.activeElement === document.body){ e.preventDefault(); transformBtn.click(); } }
+});
+
 buildTabs();
 buildDots();
 render();
+
+/* ── 16:9 mērogošana un pilnekrāns ── */
+(function(){
+  const app = document.getElementById('app');
+  function fitApp(){
+    const W = window.innerWidth, H = window.innerHeight;
+    const s = Math.min(W/1600, H/900);
+    app.style.transform = 'scale(' + s + ')';
+    app.style.left = Math.max(0,(W-1600*s)/2) + 'px';
+    app.style.top  = Math.max(0,(H-900*s)/2) + 'px';
+  }
+  window.addEventListener('resize', fitApp); fitApp();
+  const btn = document.getElementById('fsBtn');
+  function isFs(){ return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function fallback(){ if(confirm('Pilnekrāna režīms šajā logā nav pieejams. Atvērt rīku jaunā cilnē?')) window.open(location.href,'_blank'); }
+  function toggle(){
+    const el = document.documentElement;
+    try{
+      if(isFs()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else if(el.requestFullscreen) el.requestFullscreen().catch(fallback);
+      else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else fallback();
+    }catch(e){ fallback(); }
+  }
+  function upd(){ btn.textContent = isFs() ? '✕ Iziet no pilnekrāna' : '⛶ Atvērt pilnekrānu'; setTimeout(fitApp, 60); }
+  btn.addEventListener('click', toggle);
+  document.addEventListener('fullscreenchange', upd);
+  document.addEventListener('webkitfullscreenchange', upd);
+})();
 </script>
- 
 </body>
 </html>
